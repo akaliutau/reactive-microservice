@@ -1,6 +1,6 @@
 
-[![Generic badge](https://img.shields.io/badge/Build-passing-green.svg)]
-[![Generic badge](https://img.shields.io/badge/Language-Java-blue.svg)]
+![Generic badge](https://img.shields.io/badge/Build-passing-green.svg)
+![Generic badge](https://img.shields.io/badge/Language-Java-blue.svg)
 
 # About
 
