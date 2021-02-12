@@ -18,7 +18,7 @@ Here are the reasons behind my choice of technologies:
 
 Spring WebFlux is a reactive web framework based on a reactive HTTP layer; such apps can be deployed on Netty or Undertow (with native adapters) or Jetty/Tomcat/any Servlet 3.1. 
 (In this implementation I am using Netty). 
-Reactive approach can be beneficial for efficiency and scalability for workloads dealing with lots of latency and concurrency. In other words reactive approach allow to create responsive, resilient, elastic and message-driven systems. 
+Reactive approach can be beneficial for efficiency and scalability for workloads dealing with lots of latency and concurrency. In other words reactive approach allows to create responsive, resilient, elastic and message-driven systems. 
 
 Spring's reactive concepts have been taken as is from Java 8's Reactor Core library, which implements the reactive programming paradigm. Reactor Core in its turn is built on top of Reactive Streams Specification, which is the industry standard for building reactive applications in the Java world. Finally all these technologies have been refined and collected under the hood of Spring WebFlux.
 
@@ -53,13 +53,13 @@ Swagger UI works in the latest versions of Chrome, Safari, Firefox, and Edge.
 
 ## Dockerized build (needs docker to be installed first)
 
-1) The following command builds image with tag resource-service:1.0. Note the dot at the end of the command.
+1) The following command builds image with tag resource-service:1.0. Note the dot at the end of the command. This command must be run from the root directory.
 
 ```
 docker build -t resource-service:1.0 .
 ```
 
-2) this command instantiates and expose service at localhost:9090
+2) The next command instantiates and expose service at localhost:9090:
 
 ```
 docker run -p 9090:9090 resource-service:1.0
