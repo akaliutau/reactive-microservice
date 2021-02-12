@@ -34,7 +34,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.reactive.function.BodyInserters;
 
 import com.example.resource.server.data.Person;
-import com.example.resource.server.service.PersonService;
+import com.example.resource.server.service.impl.PersonServiceImpl;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -55,7 +55,7 @@ public class ApiIntegrationTest {
     private WebTestClient webTestClient;
     
     @MockBean 
-    private PersonService personService;
+    private PersonServiceImpl personServiceImpl;
 
     @MockBean 
     private ReactiveJwtDecoder reactiveJwtDecoder;
@@ -87,7 +87,7 @@ public class ApiIntegrationTest {
         Long pid = 1L;
         String lastName = "lastName";
 
-        given(personService.findAll())
+        given(personServiceImpl.findAll())
             .willReturn(
                 Flux.just(
                     Person.builder().firstName("firstName").lastName(lastName).favouriteColor("red").age(22).id(pid).build()));
@@ -113,7 +113,7 @@ public class ApiIntegrationTest {
         Long pid = 1L;
         String lastName = "lastName";
 
-        given(personService.findById(pid))
+        given(personServiceImpl.findById(pid))
             .willReturn(
                 Mono.just(
                     Person.builder().firstName("firstName").lastName(lastName).favouriteColor("red").age(22).id(pid).build()));
@@ -141,7 +141,7 @@ public class ApiIntegrationTest {
         Long pid = 1L;
         String lastName = "lastName";
         
-        given(personService.create(any())).willAnswer(b -> Mono.empty());
+        given(personServiceImpl.create(any())).willAnswer(b -> Mono.empty());
         
         Person p = Person.builder().firstName("firstName").lastName(lastName).favouriteColor("red").age(22).id(pid).build();
 
@@ -162,7 +162,7 @@ public class ApiIntegrationTest {
                     preprocessResponse(prettyPrint())));
         
         ArgumentCaptor<Mono<Person>> bookArg = ArgumentCaptor.forClass(Mono.class);
-        verify(personService).create(bookArg.capture());
+        verify(personServiceImpl).create(bookArg.capture());
 
         assertThat(bookArg.getValue().block()).isNotNull().isEqualTo(p);
 
@@ -173,7 +173,7 @@ public class ApiIntegrationTest {
     void verifyAndDocumentDeleteBook() {
 
       Long pid = 1L;
-      given(personService.deleteById(pid)).willReturn(Mono.empty());
+      given(personServiceImpl.deleteById(pid)).willReturn(Mono.empty());
 
       webTestClient
           .mutateWith(csrf())
