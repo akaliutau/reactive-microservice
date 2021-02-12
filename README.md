@@ -16,13 +16,13 @@ Main features:
 
 Here are the reasons behind my choice of technologies:
 
-1) Spring WebFlux is a reactive web framework based on a reactive HTTP layer; such apps can be deployed on Netty or Undertow (with native adapters) or Jetty/Tomcat/any Servlet 3.1. In this implementation (in this implementation I am using Netty). Reactive approach can be beneficial for efficiency and scalability for workloads dealing with lots of latency and concurrency. In other words reactive approache allow to create responsive, resilient, elastic and message-driven systems. 
+Spring WebFlux is a reactive web framework based on a reactive HTTP layer; such apps can be deployed on Netty or Undertow (with native adapters) or Jetty/Tomcat/any Servlet 3.1. In this implementation (in this implementation I am using Netty). Reactive approach can be beneficial for efficiency and scalability for workloads dealing with lots of latency and concurrency. In other words reactive approache allow to create responsive, resilient, elastic and message-driven systems. 
 
 Spring's reactive concepts have been taken as is from Java 8's Reactor Core library, which implements the reactive programming paradigm. Reactor Core is built on top of Reactive Streams Specification, which is the industry standard for building reactive applications in the Java world. Finally all these technologies have been refined and collected under the hood of Spring WebFlux.
 
 Spring WebFlux is an ideal choice if application deals with streams of data (input and output), and is a part of some bigger system where reliability and performance of each component matters (being asynchronous system can deal with latencies and are more scalable)
 
-2) As for security, fine-grained authorization from Spring Security's modules allows to secure the business tier through method annotation and the use of interface-based proxies to accomplish AOP. For demonstration purposes I added default user with username=user and password=123 which has two roles – DB_USER and DB_ADMIN.
+As for security, fine-grained authorization from Spring Security's modules allows to secure the business tier through method annotation and the use of interface-based proxies to accomplish AOP. For demonstration purposes I added default user with username=user and password=123 which has two roles – DB_USER and DB_ADMIN.
 
 # API overview
 
