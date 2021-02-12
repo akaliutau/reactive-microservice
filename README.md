@@ -20,7 +20,7 @@ As for security, fine-grained authorization from Spring Security's modules allow
 
 # Overview
 
-Back-end has only one end-point at `` /api/persons``
+Back-end has two different end-points, `` /api/persons`` and `` /api/persons/{personId}``
 Currently five methods are supported with the following signature:
 
 GET /api/persons 
