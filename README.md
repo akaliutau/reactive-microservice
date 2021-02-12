@@ -26,6 +26,8 @@ Spring WebFlux is an ideal choice if application deals with streams of data (inp
 
 As for security, fine-grained authorization from Spring Security's modules allows to secure the business tier through method annotation and the use of interface-based proxies to accomplish AOP. For demonstration purposes I added default user with username=user and password=123 which has two roles – DB_USER and DB_ADMIN.
 
+In real production system makes sense to use industry-standard oauth2 authorization flow, and implement centralized authorization through separate oauth2 servers (f.e. those on the basis OpenID Connect and OAuth 2.0 API)
+
 # API overview
 
 Back-end has two different end-points, `` /api/persons`` and `` /api/persons/{personId}``
