@@ -20,7 +20,7 @@ Spring WebFlux is a reactive web framework based on a reactive HTTP layer; such 
 
 Spring's reactive concepts have been taken as is from Java 8's Reactor Core library, which implements the reactive programming paradigm. Reactor Core is built on top of Reactive Streams Specification, which is the industry standard for building reactive applications in the Java world. Finally all these technologies have been refined and collected under the hood of Spring WebFlux.
 
-Spring WebFlux is an ideal choice if application deals with streams of data (input and output), and is a part of some bigger system where reliability and performance of each component matters (being asynchronous system can deal with latencies and are more scalable)
+Spring WebFlux is an ideal choice if application deals with streams of data (input and output), and is a part of some bigger system where reliability and performance of each component matters (being asynchronous system can deal with latencies and be more scalable)
 
 As for security, fine-grained authorization from Spring Security's modules allows to secure the business tier through method annotation and the use of interface-based proxies to accomplish AOP. For demonstration purposes I added default user with username=user and password=123 which has two roles – DB_USER and DB_ADMIN.
 
