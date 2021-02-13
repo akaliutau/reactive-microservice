@@ -17,14 +17,6 @@ spring:
   profiles:
     active: default
   
-springdoc:
-  pathsToMatch: /**
-  api-docs:
-    path: /api-docs
-  swagger-ui:
-    path: /swagger-ui/
-    base-url: /  
-
 springfox:
   documentation:
     swaggerUi:
@@ -37,7 +29,9 @@ springfox:
         path: /documentation/v2/api-docs   
 ---
 spring:
-  profiles: default
+  config:
+    activate:
+      on-profile: default
   r2dbc:
     url: r2dbc:h2:mem:///test?options=DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
     name: sa
@@ -45,7 +39,9 @@ spring:
     
 ---
 spring:
-  profiles: test
+  config:
+    activate:
+      on-profile: test
   r2dbc:
     url: r2dbc:h2:mem:///test?options=DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
     name: sa

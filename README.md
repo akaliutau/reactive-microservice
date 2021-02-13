@@ -4,7 +4,14 @@
 
 # About
 
-Resource service is a simple microservice with purpose to provide a rudimentary CRUD API to PERSON database
+Resource service is a simple microservice with purpose to provide a rudimentary CRUD API to PERSON database, which is used to hold the following data in each record:
+
+   id, 
+   first_name, 
+   last_name, 
+   age,
+   favourite_color
+
 
 Main features:
 
@@ -30,7 +37,7 @@ In real production system makes sense to use industry-standard oauth2 authorizat
 
 # API overview
 
-Back-end has two different end-points, `` /api/persons`` and `` /api/persons/{personId}``
+Back-end has two different end-points, `` /api/persons`` and  `` /api/persons/{personId}``
 Currently five methods are supported with the following signature:
 
 GET /api/persons 
@@ -43,7 +50,7 @@ PUT /api/persons
 
 DELETE /api/persons/{personId}
 
-Full API Documentation for back-end server's API is available on http://localhost:9090/api/documentation/swagger-ui/. 
+Full API Documentation for back-end server's API is available on http://localhost:9090/api/documentation/swagger-ui/ 
 
 Swagger UI works in the latest versions of Chrome, Safari, Firefox, and Edge.
 
