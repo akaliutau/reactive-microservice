@@ -1,4 +1,4 @@
-
+﻿
 ![Generic badge](https://img.shields.io/badge/Build-passing-green.svg)
 ![Generic badge](https://img.shields.io/badge/Language-Java-blue.svg)
 
@@ -102,7 +102,11 @@ Username: user
 
 Password: 123
 
-One can test endpoins through curl as well:
+# Testing
+
+There are several integration tests written for web and business layers. I used the most popular testing frameworks in the Java ecosystem - JUnit 5 and Mockito, plus out-of-the-box functionality proposed by Spring Boot.
+
+One can test endpoins manually through curl as well:
 
 ```
 curl -X GET "http://localhost:9090/api/persons" --user user:123 -H "accept: */*"
