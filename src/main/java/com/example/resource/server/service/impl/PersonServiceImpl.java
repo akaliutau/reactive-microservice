@@ -17,7 +17,7 @@ import reactor.core.publisher.Mono;
  * @author akaliutau
  */
 @Service
-@PreAuthorize("hasAnyRole('LIBRARY_USER', 'DB_ADMIN')")
+@PreAuthorize("hasAnyRole('DB_USER', 'DB_ADMIN')")
 public class PersonServiceImpl implements PersonService {
 
     private final PersonRepository personRepository;
