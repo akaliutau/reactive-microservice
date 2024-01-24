@@ -6,11 +6,13 @@
 
 Resource service is a simple microservice with purpose to provide a rudimentary CRUD API to PERSON database, which is used to hold the following data in each record:
 
-   id, 
-   first_name, 
-   last_name, 
-   age,
-   favourite_color
+```
+   "id": Long, 
+   "first_name": String, 
+   "last_name": String, 
+   "age": Integer,
+   "favourite_color": String
+```
 
 
 Main features:
@@ -23,32 +25,39 @@ Main features:
 
 Here are the reasons behind my choice of technologies:
 
-Spring WebFlux is a reactive web framework based on a reactive HTTP layer; such apps can be deployed on Netty or Undertow (with native adapters) or Jetty/Tomcat/any Servlet 3.1. 
-(In this implementation I am using Netty). 
-Reactive approach can be beneficial for efficiency and scalability for workloads dealing with lots of latency and concurrency. In other words reactive approach allows to create responsive, resilient, elastic and message-driven systems. 
+Spring WebFlux is a reactive web framework based on a reactive HTTP layer; such apps can be deployed on Netty or Undertow 
+(with native adapters) or Jetty/Tomcat/any Servlet 3.1 (In this implementation I am using Netty). 
+Reactive approach can be beneficial for efficiency and scalability for workloads dealing with lots of latency and concurrency. 
+In other words reactive approach allows to create responsive, resilient, elastic and message-driven systems. 
 
-Spring's reactive concepts have been taken as is from Java 8's Reactor Core library, which implements the reactive programming paradigm. Reactor Core in its turn is built on top of Reactive Streams Specification, which is the industry standard for building reactive applications in the Java world. Finally all these technologies have been refined and collected under the hood of Spring WebFlux.
+Spring's reactive concepts have been taken as is from Java 8's Reactor Core library, which implements the reactive programming paradigm. 
+Reactor Core in its turn is built on top of Reactive Streams Specification, which is the industry standard for building 
+reactive applications in the Java world. 
+Finally, all these technologies have been refined and collected under the hood of Spring WebFlux.
 
-Spring WebFlux is an ideal choice if application deals with streams of data (input and output), and is a part of some bigger system where reliability and performance of each component matters (being asynchronous system can deal with latencies and be more scalable)
+Spring WebFlux is an ideal choice if application deals with streams of data (input and output), and is a part of some 
+bigger system where reliability and performance of each component matters (being asynchronous system can deal with latencies and be more scalable)
 
-As for security, fine-grained authorization from Spring Security's modules allows to secure the business tier through method annotation and the use of interface-based proxies to accomplish AOP. For demonstration purposes I added default user with username=user and password=123 which has two roles – DB_USER and DB_ADMIN.
+As for security, fine-grained authorization from Spring Security's modules allows to secure the business tier through 
+method annotation and the use of interface-based proxies to accomplish AOP. For demonstration purposes 
+I added default user with username=user and password=123 which has two roles – `DB_USER` and `DB_ADMIN`
 
-In real production system makes sense to use industry-standard oauth2 authorization flow, and implement centralized authorization through separate oauth2 servers (f.e. those on the basis OpenID Connect and OAuth 2.0 API)
+In real production system makes sense to use industry-standard oauth2 authorization flow, and implement centralized 
+authorization through separate oauth2 servers (f.e. those on the basis OpenID Connect and OAuth 2.0 API)
 
 # API overview
 
-Back-end has two different end-points, `` /api/persons`` and  `` /api/persons/{personId}``
+Back-end has two different end-points, `` /api/persons`` and  ``/api/persons/{personId}``
 Currently five methods are supported with the following signature:
 
-GET /api/persons 
+| Verb   | Endpoint                |
+|--------|-------------------------|
+| GET    | /api/persons            |
+| GET    | /api/persons/{personId} |
+| POST   | /api/persons            |
+| PUT    | /api/persons            |
+| DELETE | /api/persons/{personId} |
 
-GET /api/persons/{personId}
-
-POST /api/persons
-
-PUT /api/persons
-
-DELETE /api/persons/{personId}
 
 Full API Documentation for back-end server's API is available on http://localhost:9090/api/documentation/swagger-ui/ 
 
@@ -64,14 +73,14 @@ Swagger UI works in the latest versions of Chrome, Safari, Firefox, and Edge.
 
 1) The following command builds image with tag resource-service:1.0. Note the dot at the end of the command. This command must be run from the root directory.
 
-```
-docker build -t resource-service:1.0 .
+```shell
+sudo docker build -t resource-service:1.0 .
 ```
 
 2) The next command instantiates and expose service at localhost:9090:
 
-```
-docker run -p 9090:9090 resource-service:1.0
+```shell
+sudo docker run -p 9090:9090 resource-service:1.0
 ```
 
 
@@ -83,14 +92,16 @@ In order to build and run both back-end the following prerequisites are needed:
 [Lombok](https://projectlombok.org/download)
 
 Run from the project's root directory:
-``mvn clean package ``
+```shell
+mvn clean package 
+```
 
 
 <br/>
 
 Run server as follows:
 
-```
+```shell
 java -jar resource-1.0.0-SNAPSHOT.jar
 ```
 
@@ -104,11 +115,12 @@ Password: 123
 
 # Testing
 
-There are several integration tests written for web and business layers. I used the most popular testing frameworks in the Java ecosystem - JUnit 5 and Mockito, plus out-of-the-box functionality proposed by Spring Boot.
+There are several integration tests written for web and business layers. I used the most popular testing frameworks 
+in the Java ecosystem - JUnit 5 and Mockito, plus out-of-the-box functionality proposed by Spring Boot.
 
-One can test endpoins manually through curl as well:
+One can test endpoints manually, fe. using curl:
 
-```
+```shell
 curl -X GET "http://localhost:9090/api/persons" --user user:123 -H "accept: */*"
 ```
 
